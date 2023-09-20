@@ -85,6 +85,12 @@ export class DashboardComponent implements OnInit {
                 this.startPages.push(i);
               }
             }
+          } else {
+            this.startPages = [];
+            this.endPages = [];
+            for (let j = 0; j < this.paginationPage.total_pages; j++) {
+              this.endPages.push(j + 1);
+            }
           }
         } else {
           this.errmsg = 'no testimonials for the selected filters';
@@ -140,10 +146,10 @@ export class DashboardComponent implements OnInit {
 
   findBySearch(event?: any) {
     this.searchText = event || this.searchText;
-    this.errmsg = '';
     clearTimeout(this.timeout);
     this.timeout = setTimeout(async () => {
       if (this.searchText.length == 0) {
+        this.getTestimonials();
         return;
       }
       if (this.searchText.length < 4) {
