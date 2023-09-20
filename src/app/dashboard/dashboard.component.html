@@ -1,0 +1,118 @@
+<div class="middle-section">
+  <div class="section-body">
+    <div class="head-icon">
+      <img src="assets/images/smiley-chat.png" alt="">
+    </div>
+    <div class="text-count">
+      <h3 class="msg-text">Testimonials I've left</h3>
+      <span class="count">{{paginationPage.total_count}}</span>
+    </div>
+    <div class="buttom-icon">
+      <img src="assets/images/bottom-icon.png" alt="">
+    </div>
+    <div class="err-msg" *ngIf="errmsg">
+      <em>{{errmsg}}</em>
+      <button class="close-button" aria-label="Close alert" type="button" (click)="closeToast()" data-close>X</button>
+    </div>
+  </div>
+</div>
+
+<div class="testimonial-grid">
+  <div class="grid-body" [style.filter]="loading?'blur(4px)':null">
+    <div class="filter-header">
+      <div class="filter-testim">
+        <div class="dropdown-language">
+          <button class="btn-lang" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img [src]="languages[activeLangIndex]?.icon_url" alt="">
+            <img src="assets/images/dropdown-arrow.png" alt="">
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+            <ng-template ngFor let-language let-j="index" [ngForOf]="languages">
+              <li class="dropdown-item" (click)="filterLanguage(language,j)">
+                <div class="radio-btn" [ngClass]="{'active': j==activeLangIndex}"></div><img [src]="language.icon_url"
+                  alt=""><a>{{language.title}}</a>
+                <div class="lang-val">{{language.num_exercises}}</div>
+              </li>
+            </ng-template>
+          </ul>
+        </div>
+        <div class="search-filter">
+          <button type="submit" (click)="findBySearch()"><img src="assets/images/search-icon.png" alt=""></button>
+          <input type="search" [placeholder]="'Filter by exercise title'" aria-label="Search" [(ngModel)]="searchText"
+            (ngModelChange)="findBySearch()">
+        </div>
+      </div>
+      <div class="sort-testim dropdown-sort">
+        <button class="btn-sort" role="button" id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="sort-msg">{{defaultSort}}</div>
+          <img src="assets/images/dropdown-arrow.png" alt="">
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink2">
+          <ng-template ngFor let-sort let-k="index" [ngForOf]="sortOptions">
+            <li><a class="dropdown-item" (click)="filterBySort(sort)">{{sort.name}}</a></li>
+          </ng-template>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="grid-view">
+      <table class="table table-striped">
+        <tbody>
+          <ng-template ngFor let-testimonial let-i="index" [ngForOf]="activeTestimonials">
+            <tr>
+              <td><img class="icon-img" [src]="testimonial.language?.icon_url" alt=""></td>
+              <td><img class="icon-img" [src]="testimonial.exercise?.icon_url" alt=""></td>
+              <td>
+                <h4>{{testimonial.mentor}}</h4>
+                <div>On {{testimonial.exercise.title}} in {{testimonial.language.title}}</div>
+              </td>
+              <td>
+                <div>{{testimonial.content}}</div>
+              </td>
+              <td>
+                <div>{{formatDate(testimonial.created_at)}}</div>
+              </td>
+              <td><img src="assets/images/dropdown-arrow.png" alt="" routerLink="/not-found/{{testimonial.id}}"
+                  type="button"><a href=""></a></td>
+            </tr>
+
+          </ng-template>
+
+        </tbody>
+
+      </table>
+    </div>
+    <hr>
+    <div class="pagination-view">
+      <ul class="pagination justify-content-around">
+        <li class="page-item prev-btn" [ngClass]="{'disabled': activePage == 1}">
+          <a class="page-link" (click)="activePage == 1? $event.stopPropagation(): prevPage()" type="button"><img
+              src="assets/images/arrow.png" alt=""><span>Previous</span> </a>
+        </li>
+        <li class="page-item">
+          <ul class="pagination items-pages justify-content-center">
+            <li class="page-item" *ngFor="let page of startPages"><a class="page-link" type="button"
+                [ngClass]="{'active': page == activePage}" (click)="getPage(page)">{{page}}</a></li>
+            <li class="page-item" *ngIf="paginationPage.total_pages > 3"><a class="page-link">...</a></li>
+            <li class="page-item" *ngFor="let page of endPages"><a class="page-link" type="button"
+                (click)="getPage(page)" [ngClass]="{'active': page == activePage}">{{page}}</a></li>
+          </ul>
+        </li>
+        <li class="page-item next-btn" [ngClass]="{'disabled': activePage == paginationPage.total_pages}">
+          <a class="page-link" type="button"
+            (click)="activePage == paginationPage.total_pages? $event.stopPropagation():nextPage()"><span>Next</span><img
+              src="assets/images/arrow.png" alt=""> </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ng-container *ngIf="loading">
+    <div class="spinner-grow"
+      style="width: 3rem; height: 3rem; color: var(--color-primary); position: fixed; top: 25rem;" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </ng-container>
+</div>
