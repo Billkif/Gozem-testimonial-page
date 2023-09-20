@@ -1,0 +1,64 @@
+<div class="header-section">
+  <div class="navigation-logo">
+    <a href="">
+      <img src="assets/images/gozem-logo.png" alt="image">
+    </a>
+  </div>
+  <div class="navigation-menus">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a routerLink="" class="nav-link" [ngClass]="{'active': activeRoute == 1}" (click)="changePage(1)">
+          <img src="assets/images/dashboard.png" alt=""><span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/not-found/2" class="nav-link" [ngClass]="{'active': activeRoute == 2}" (click)="changePage(2)">
+          <img src="assets/images/languages.png" alt=""><span>Languages</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/not-found/3" class="nav-link" [ngClass]="{'active': activeRoute == 3}" (click)="changePage(3)">
+          <img src="assets/images/messages.png" alt=""><span>Mentoring</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/not-found/4" class="nav-link" [ngClass]="{'active': activeRoute == 4}" (click)="changePage(4)">
+          <img src="assets/images/contribute.png" alt=""><span>Contribute</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="navigation-notif-profile">
+    <div class="chats">
+      <img src="assets/images/chats.png" alt="">
+    </div>
+    <div class="alerts">
+      <img src="assets/images/alert-info.png" alt="">
+    </div>
+    <div class="bell-notif">
+      <p>2</p>
+      <div class="bell">
+        <img src="assets/images/bell-notif2.png" alt="">
+      </div>
+    </div>
+    <div class="amt-btn">
+      <p></p>
+      <button class="amt-val">
+        <img src="assets/images/badge.png" alt="">
+        <span>300K</span>
+      </button>
+    </div>
+    <div class="profile-btn">
+      <div class="profile">
+        <img src="assets/images/profile.png" alt="">
+      </div>
+      <div class="actions">
+        <img src="assets/images/action-img.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+
+<router-outlet></router-outlet>

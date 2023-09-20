@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+@font-face {
+  font-family: poppins-regular;
+  src: url(assets/fonts/poppins/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: poppins-bold;
+  src: url(assets/fonts/poppins/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: "poppins-thin";
+  src: url(assets/fonts/poppins/Poppins-Thin.ttf);
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(assets/fonts/poppins/Poppins-Medium.ttf);
+}
+
+:root {
+  --color-black: #555555;
+  --color-light: #fff;
+  --color-primary: #179138;
+  --color-red-alert: #d85050;
+  --color-light-gray: #cbc9d9;
+  --color-field-gray: #f0f3f9;
+}
