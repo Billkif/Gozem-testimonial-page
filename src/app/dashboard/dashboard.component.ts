@@ -51,7 +51,6 @@ export class DashboardComponent implements OnInit {
   getTestimonials(params?: any) {
     this.loading = true;
     this.activeTestimonials = [];
-    this.startPages = [];
     this.endPages = [];
     this.errmsg = '';
     this.testimonials
@@ -79,12 +78,31 @@ export class DashboardComponent implements OnInit {
             this.paginationPage.total_pages > 3
           ) {
             if (this.activePage < this.startPages[2]) {
+              if (this.activePage > 3) {
+                this.startPages = [
+                  this.activePage - 1,
+                  this.activePage,
+                  this.activePage + 1,
+                ];
+              } else if (this.activePage <= 3) {
+                this.startPages = [1, 2, 3];
+              } else {
+              }
             } else {
               this.startPages = [];
               for (let i = this.activePage; i < this.activePage + 3; i++) {
                 this.startPages.push(i);
               }
             }
+          } else if (
+            this.activePage > this.paginationPage.total_pages - 3 &&
+            this.paginationPage.total_pages > 3
+          ) {
+            // this.startPages = [];
+            // this.endPages = [];
+            // for (let j = 0; j < this.paginationPage.total_pages; j++) {
+            //   this.endPages.push(j + 1);
+            // }
           } else {
             this.startPages = [];
             this.endPages = [];
