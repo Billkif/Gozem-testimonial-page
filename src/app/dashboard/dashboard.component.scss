@@ -301,14 +301,21 @@ td {
   margin-top: 10px;
   background: #ee44454a;
   height: 47px;
+  border-radius: 5px;
   em {
     text-align: center;
     align-items: unset;
     align-self: center;
+    color: var(--color-light);
+    font-family: "poppins-medium";
     margin-left: 50px;
   }
   button {
     border: none;
     background: none;
+    color: var(--color-light);
   }
+}
+
+@media screen and (max-width: 780px) {
 }

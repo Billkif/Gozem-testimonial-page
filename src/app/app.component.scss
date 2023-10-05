@@ -149,3 +149,17 @@
 hr {
   margin: 0px !important;
 }
+
+//Mobile view
+@media screen and (max-width: 760px) {
+  .header-section {
+    // background-color: red;
+  }
+}
+
+//Tablet view
+@media screen and (min-width: 761px) and (max-width: 1200px) {
+  .header-section {
+    // background-color: red;
+  }
+}
