@@ -317,5 +317,58 @@ td {
   }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (min-width: 761px) and (max-width: 1000px) {
+  .testimonial-grid {
+    .grid-body {
+      height: 900px;
+      .filter-header {
+        display: block;
+        .sort-testim {
+          margin-bottom: 10px;
+          button {
+            .sort-msg {
+              font-size: 14px;
+            }
+            img {
+              width: 18px;
+            }
+          }
+        }
+
+        .search-filter {
+          width: 250px;
+          input {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .testimonial-grid {
+    .grid-body {
+      .filter-header {
+        display: block;
+        .sort-testim {
+          margin-bottom: 10px;
+          button {
+            .sort-msg {
+              font-size: 14px;
+            }
+            img {
+              width: 18px;
+            }
+          }
+        }
+
+        .search-filter {
+          width: 250px;
+          input {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
 }
